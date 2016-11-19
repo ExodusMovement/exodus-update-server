@@ -1,7 +1,8 @@
+'use strict'
 const express = require('express')
 const minimist = require('minimist')
 const path = require('path')
-const UpdateServer = require('../lib')
+const { Router: createRouter } = require('../lib')
 
 const argv = minimist(process.argv.slice(2), {
   string: [
@@ -17,7 +18,7 @@ const argv = minimist(process.argv.slice(2), {
 })
 
 const app = express()
-app.use(argv.path, new UpdateServer({ datadir: argv.datadir }).router)
+app.use(argv.path, createRouter({ datadir: argv.datadir }))
 
 // 404 and 500
 app.use((req, res) => res.status(404).send('Page not found.'))

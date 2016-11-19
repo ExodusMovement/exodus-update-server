@@ -42,19 +42,28 @@ Simple example:
 {
   "<1.0.0": {
     "darwin": {
-      "x64": {
-        "message": "Version 1.0.0 was released! Update immediately!"
-      }
+      "x64": [{
+        "id": "<1.0.0-darwin-x64-0",
+        "title": "Special Exodus Announcement",
+        "message": "Version 1.0.0 was released! Update immediately!",
+        "force": true
+      }]
     },
     "linux": {
-      "x64": {
-        "message": "Version 1.0.0 was released! Update immediately!"
-      }
+      "x64": [{
+        "id": "<1.0.0-linux-x64-0",
+        "title": "Special Exodus Announcement",
+        "message": "Version 1.0.0 was released! Update immediately!",
+        "force": true
+      }]
     },
     "win32": {
-      "x64": {
-        "message": "Version 1.0.0 was released! Update immediately!"
-      }
+      "x64": [{
+        "id": "<1.0.0-win32-x64-0",
+        "title": "Special Exodus Announcement",
+        "message": "Version 1.0.0 was released! Update immediately!",
+        "force": true
+      }]
     }
   }
 }
@@ -72,10 +81,10 @@ Simple example:
 
 ```js
 const express = require('express')
-const UpdateServer = require('exodus-update-server')
+const EUS = require('exodus-update-server')
 
 const app = express()
-app.use(new UpdateServer({ datadir: '...' }).router)
+app.use('/desktop', EUS.Router({ datadir: '...' }))
 
 app.listen(...)
 ```
